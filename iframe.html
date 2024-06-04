@@ -1,0 +1,759 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <link rel="preload" href="https://uipci.newshore.es/AV/styles/styles.min.css" as="style" onload="this.rel='stylesheet'" />
+    <title>PCI</title>
+</head>
+<body>
+    <div class="card-payment-form">
+        <form class="card-payment-form_form" novalidate="" id="card-payment-form" autocomplete="off">
+            <input type="hidden" id="csrf_token" value="[Antiforgery]">
+            <fieldset>
+                <div class="ui-form_grid">
+                    <div class="ui-form_group ui-form_group--card-name">
+                        <div class="ui-input-container has-icon">
+                            <label class="ui-label" for="Holder">[Label.CardHolder]</label>
+                            <div class="ui-input_wrap">
+                                <span aria-hidden="true" class="icon icon-user"></span>
+                                <input id="Holder"
+                                       required name="Holder"
+                                       type="text"
+                                       class="ui-input"
+                                       onfocusout="handleFocusout(event)"
+                                       onkeydown="handleKeydown(event)"
+                                       onfocus="handleFocus(event)"
+                                       oninput="validateInput(event)"
+                                       onblur="validateInput(event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-form_group ui-form_group--card-number">
+                        <div class="ui-input-card-number">
+                            <div class="ui-input-container">
+                                <label class="ui-label" for="Data">
+                                    [Label.CardNumber]
+                                </label>
+                                <span class="icon icon-account-credit"></span>
+                                <div class="ui-input_wrap">
+                                    <input id="Data"
+                                           class="ui-input"
+                                           required name="Data"
+                                           type="text"
+                                           autocomplete="off"
+                                           onfocusout="handleFocusout(event)"
+                                           onfocus="handleFocus(event)"
+                                           oninput="validateInput(event)"
+                                           onblur="validateInput(event)" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-form-wraper">
+                        <div class="ui-form_group ui-form_group--card-expiration">
+                            <div class="ui-select-expiration-date">
+                                <div class="ui-multicontrol-container">
+                                    <fieldset>
+                                        <legend class="ui-label"> [Label.ExpirationDate] </legend>
+                                        <div class="ui-form_controls">
+                                            <div class="ui-form_group">
+                                                <div class="ui-select-container show-label">
+                                                    <div class="ui-label" id="labelId_expirationMonth_ExpirationDate">
+                                                        [Label.Month]
+                                                    </div>
+                                                    <div class="ui-dropdown" click-outside-listener-is-active="false"
+                                                         is-visible="false" options="" index-selected-option="-1">
+                                                        <button type="button" avoidautoscrolling="false"
+                                                                class="ui-input" role="combobox"
+                                                                id="expirationMonth_ExpirationDate" aria-haspopup="listbox"
+                                                                aria-expanded="false" aria-controls=""
+                                                                aria-labelledby="labelId_expirationMonth_ExpirationDate"
+                                                                onfocus="handleFocus(event)"
+                                                                onfocusout="handleFocusout(event)"
+                                                                onblur="handleOnblurExpirationMonth(event)">
+                                                            <div class="ui-dropdown_value-placeholder">
+                                                                [Tooltip.Month]
+                                                            </div>
+                                                        </button>
+                                                        <ul class="ui-dropdown_list hide-element" role="listbox"
+                                                            tabindex="-1" id="listId_expirationMonth_ExpirationDate"
+                                                            aria-labelledby="labelId_expirationMonth_ExpirationDate">
+
+                                                            <li class="ui-dropdown_item" role="none">
+                                                                <button type="button" class="ui-dropdown_item_option"
+                                                                        role="option" id="expirationMonth_ExpirationDate-1">
+                                                                    <span class="ui-dropdown_item_option_name">1</span>
+                                                                </button>
+                                                            </li>
+                                                            <li class="ui-dropdown_item" role="none">
+                                                                <button type="button" class="ui-dropdown_item_option"
+                                                                        role="option" id="expirationMonth_ExpirationDate-2">
+                                                                    <span class="ui-dropdown_item_option_name">2</span>
+                                                                </button>
+                                                            </li>
+                                                            <li class="ui-dropdown_item" role="none">
+                                                                <button type="button" class="ui-dropdown_item_option"
+                                                                        role="option" id="expirationMonth_ExpirationDate-3">
+                                                                    <span class="ui-dropdown_item_option_name">3</span>
+                                                                </button>
+                                                            </li>
+                                                            <li class="ui-dropdown_item" role="none">
+                                                                <button type="button" class="ui-dropdown_item_option"
+                                                                        role="option" id="expirationMonth_ExpirationDate-4">
+                                                                    <span class="ui-dropdown_item_option_name">4</span>
+                                                                </button>
+                                                            </li>
+                                                            <li class="ui-dropdown_item" role="none">
+                                                                <button type="button" class="ui-dropdown_item_option"
+                                                                        role="option" id="expirationMonth_ExpirationDate-5">
+                                                                    <span class="ui-dropdown_item_option_name">5</span>
+                                                                </button>
+                                                            </li>
+                                                            <li class="ui-dropdown_item" role="none">
+                                                                <button type="button" class="ui-dropdown_item_option"
+                                                                        role="option" id="expirationMonth_ExpirationDate-6">
+                                                                    <span class="ui-dropdown_item_option_name">6</span>
+                                                                </button>
+                                                            </li>
+                                                            <li class="ui-dropdown_item" role="none">
+                                                                <button type="button" class="ui-dropdown_item_option"
+                                                                        role="option" id="expirationMonth_ExpirationDate-7">
+                                                                    <span class="ui-dropdown_item_option_name">7</span>
+                                                                </button>
+                                                            </li>
+                                                            <li class="ui-dropdown_item" role="none">
+                                                                <button type="button" class="ui-dropdown_item_option"
+                                                                        role="option" id="expirationMonth_ExpirationDate-8">
+                                                                    <span class="ui-dropdown_item_option_name">8</span>
+                                                                </button>
+                                                            </li>
+                                                            <li class="ui-dropdown_item" role="none">
+                                                                <button type="button" class="ui-dropdown_item_option"
+                                                                        role="option" id="expirationMonth_ExpirationDate-9">
+                                                                    <span class="ui-dropdown_item_option_name">9</span>
+                                                                </button>
+                                                            </li>
+                                                            <li class="ui-dropdown_item" role="none">
+                                                                <button type="button" class="ui-dropdown_item_option"
+                                                                        role="option"
+                                                                        id="expirationMonth_ExpirationDate-10">
+                                                                    <span class="ui-dropdown_item_option_name">10</span>
+                                                                </button>
+                                                            </li>
+                                                            <li class="ui-dropdown_item" role="none">
+                                                                <button type="button" class="ui-dropdown_item_option"
+                                                                        role="option"
+                                                                        id="expirationMonth_ExpirationDate-11">
+                                                                    <span class="ui-dropdown_item_option_name">11</span>
+                                                                </button>
+                                                            </li>
+                                                            <li class="ui-dropdown_item" role="none">
+                                                                <button type="button" class="ui-dropdown_item_option"
+                                                                        role="option"
+                                                                        id="expirationMonth_ExpirationDate-12">
+                                                                    <span class="ui-dropdown_item_option_name">12</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" name="expirationMonth" id="ExpirationMonth" />
+                                            </div>
+                                            <div class="ui-form_group">
+                                                <div class="ui-select-container show-label">
+                                                    <div class="ui-label" id="labelId_expirationYear_ExpirationDate">
+                                                        [Label.Year]
+                                                    </div>
+                                                    <div class="ui-dropdown" click-outside-listener-is-active="false"
+                                                         is-visible="false" options="" index-selected-option="-1">
+                                                        <button type="button" avoidautoscrolling="false"
+                                                                class="ui-input" role="combobox"
+                                                                id="expirationYear_ExpirationDate" aria-haspopup="listbox"
+                                                                aria-expanded="false" aria-controls=""
+                                                                aria-labelledby="labelId_expirationYear_ExpirationDate"
+                                                                onfocus="handleFocus(event)"
+                                                                onfocusout="handleFocusout(event)"
+                                                                onblur="handleOnblurExpirationYear(event)">
+                                                            <div class="ui-dropdown_value-placeholder">
+                                                                [Tooltip.Year]
+                                                            </div>
+                                                        </button>
+                                                        <ul class="ui-dropdown_list hide-element" role="listbox"
+                                                            tabindex="-1" id="listId_expirationYear_ExpirationDate"
+                                                            aria-labelledby="labelId_expirationYear_ExpirationDate">
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" name="expirationYear" id="ExpirationYear" />
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="divCvv" class="ui-form_group ui-form_group--card-cvv">
+                            <div class="ui-input-container">
+                                <label class="ui-label" for="Cvv">[Label.CVV]</label>
+                                <button type="button" class="ui-label_i icon-info-circle-filled" tabindex="-1">
+                                    <span class="hide-visually">[Tooltip.CVV]</span>
+                                </button>
+                                <div class="popover ui-tooltip-card-cvv">
+                                    <div class="arrow"></div>
+                                    <div class="popover-body">[Tooltip.CVV]</div>
+                                </div>
+                                <div class="ui-input_wrap">
+                                    <input class="ui-input"
+                                           required name="Cvv"
+                                           id="Cvv"
+                                           type="text"
+                                           autocomplete="off"
+                                           onfocusout="handleFocusout(event)"
+                                           onfocus="handleFocus(event)"
+                                           oninput="validateInput(event)"
+                                           onblur="validateInput(event)" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <script>
+        let validPatterns = {};
+        const unknown = 'Unknown';
+        const cardTypeTP = 'TP';
+        const cardTypeAX = 'AX';
+
+        function setAttributesToListElement(parentElement, status = false, ariControls = '') {
+
+            if (status) {
+                parentElement.nextElementSibling.classList.remove('hide-element');
+            } else {
+                parentElement.nextElementSibling.classList.add('hide-element');
+            }
+
+            parentElement.setAttribute('aria-expanded', status);
+            parentElement.setAttribute('aria-controls', ariControls);
+        }
+
+        function getElementByIdCustom(idHtml) {
+            if (idHtml) {
+                return document.getElementById(idHtml);
+            }
+            console.warn(`${idHtml} doesn't exists`);
+        }
+
+        function addEventListenerCustom(inputHtml, eventName, callback) {
+            if (inputHtml && eventName) {
+                inputHtml.addEventListener(eventName, callback);
+                return;
+            }
+            console.warn('Empty attribute to render ');
+        }
+
+        function handleKeydown(event) {
+            if (event.code === 'Space' && event.target.selectionStart === 0) {
+                event.preventDefault();
+            }
+        }
+
+        function handleFocus(event) {
+            event.target.parentElement.parentElement.classList.add('is-focused');
+        }
+
+        function handleFocusout(event) {
+            event.target.parentElement.parentElement.classList.remove('is-focused');
+        }
+
+        function handleErrorInput(event, isValid) {
+            if (isValid) {
+                event.target.parentNode.parentNode.classList.remove('has-error');
+                event.target.classList.remove('has-error');
+            }
+            else {
+                event.target.parentNode.parentNode.classList.add('has-error');
+                event.target.classList.add('has-error');
+            }
+        }
+
+        function validateInput(event) {
+            switch (event.target.name) {
+                case 'Data':
+                    validateCardNumber(event);
+                    break;
+                case 'Holder':
+                    validateHolderName(event);
+                    break;
+                case 'Cvv':
+                    validateCvv(event);
+                    break;
+            }
+        }
+
+        function hasValueClass(value, event) {
+            if (value.length > 0) {
+                event.target.parentNode.parentNode.classList.add('has-value');
+            } else {
+                event.target.parentNode.parentNode.classList.remove('has-value');
+            }
+        }
+
+        function splitCard(event) {
+            let value = event.target.value;
+
+            if (value.length >= 4) {
+                let segments = value.replace(/\s/g, '').match(/.{1,4}/g);
+                value = segments.join(' ');
+            }
+
+            event.target.value = value;
+        }
+
+        function detectCardType(cardNumber) {
+
+            if (!cardNumber) return unknown;
+            for (let type in validPatterns) {
+                if (validPatterns[type].test(cardNumber.replace(/\s/g, ''))) {
+                    return type;
+                }
+            }
+            return unknown;
+        }
+
+        function handleImgByCardType(event, cardType) {
+            let containerElement = event.target.closest('.ui-input-container');
+            let iconElement = containerElement.querySelector('.icon');
+            let imgElement = containerElement.querySelector('.ui-input-card-number-img');
+            let labelElement = containerElement.querySelector('.ui-label');
+
+            if (cardType != unknown) {
+                let url = "https://uipci.newshore.es/AV/imgs/payment-methods/" + cardType + ".svg?";
+                let imgHtml = '<div class="ui-input-card-number-img" style="background-image: url(' + url + ')"></div>';
+
+                if (iconElement) {
+                    iconElement.remove();
+                }
+
+                if (!imgElement) {
+                    labelElement.insertAdjacentHTML('afterend', imgHtml);
+                } else {
+                    imgElement.style.backgroundImage = "url(" + url + ")";
+                }
+            } else {
+                let iconHtml = '<span class="icon icon-account-credit"></span>';
+                if (imgElement) {
+                    imgElement.remove();
+                }
+
+                if (!iconElement) {
+                    labelElement.insertAdjacentHTML('afterend', iconHtml);
+                }
+            }
+        }
+
+        function validateHolderName(event) {
+            const cardName = event.target.value.replace(/\d/g, '');
+            event.target.value = cardName;
+
+            hasValueClass(cardName, event);
+
+            const exp = [Regex.CardHolder];
+            const regex = new RegExp(exp);
+            let isValidReg = false;
+
+            isValidReg = regex.test(cardName);
+
+            handleErrorInput(event, isValidReg);
+        }
+
+        function validateCvv(event) {
+            let maxLengthEnable = 3;
+            let regexCvv = [Regex.CVV];
+            let cardCvv = event.target.value.replace(/\D/g, '');
+
+            const dataInput = getElementByIdCustom('Data');
+            const cardType = detectCardType(dataInput.value);
+
+            if (cardType === cardTypeAX) {
+                maxLengthEnable = 4;
+                regexCvv = '^[0-9]{4}$';
+            }
+
+            if (cardCvv.length > maxLengthEnable) {
+                cardCvv = cardCvv.slice(0, maxLengthEnable);
+            }
+
+            event.target.value = cardCvv;
+
+            hasValueClass(cardCvv, event);
+
+            const regex = new RegExp(regexCvv);
+            let isValidReg = false;
+
+            isValidReg = regex.test(cardCvv);
+
+            handleErrorInput(event, isValidReg);
+        }
+
+        function validateCardNumber(event) {
+            const maxLengthEnable = 16;
+            let cardNumber = event.target.value.replace(/\s/g, '').replace(/\D/g, '');
+            let isValid = false;
+
+            if (cardNumber.length > maxLengthEnable) {
+                cardNumber = cardNumber.slice(0, maxLengthEnable);
+            }
+
+            event.target.value = cardNumber;
+
+            let cardType = detectCardType(cardNumber);
+            isValid = cardType != unknown;
+
+            handleImgByCardType(event, cardType);
+            validateCvvByCardNumberType(cardType);
+            hasValueClass(cardNumber, event);
+
+            if (isValid) {
+                const regex = new RegExp(validPatterns[cardType]);
+                isValid = regex.test(cardNumber);
+            }
+
+            splitCard(event);
+            handleErrorInput(event, isValid);
+        }
+
+        function validateCvvByCardNumberType(cardType) {
+            const cvvElement = getElementByIdCustom('divCvv');
+            const cvvInput = getElementByIdCustom('Cvv');
+
+            if (cardType === cardTypeTP) {
+                cvvElement.style.display = 'none';
+                cvvElement.classList.remove('has-error');
+                cvvInput.classList.remove('has-error');
+            } else {
+                cvvElement.style.display = 'block';
+
+                if (cardType !== unknown && cvvInput.value.length > 0) {
+                    const blurEvent = new Event('blur');
+                    cvvInput.dispatchEvent(blurEvent);
+                }
+            }
+        }
+
+        function resetItemElement(item) {
+            item.classList.remove("ui-dropdown_item_option--selected", "is-focus");
+            item.setAttribute('aria-selected', false);
+            item.parentElement.classList.remove("ui-dropdown_item--selected");
+        }
+
+        function addAttributesToItemElement(item) {
+            item.classList.add("ui-dropdown_item_option--selected", "is-focus");
+            item.setAttribute('aria-selected', true);
+            item.parentElement.classList.add("ui-dropdown_item--selected");
+        }
+
+        function handleDropdownItemClick(item, oldValue, elementToUpdate, inputElementId, errorControlFunction) {
+            if (oldValue) {
+                resetItemElement(oldValue);
+            }
+
+            addAttributesToItemElement(item);
+            elementToUpdate.innerHTML = "<div class='ui-dropdown_value'><span class='ui-dropdown_value_name'>" + item.textContent.trim() + "</span></div>";
+            
+            const dropdownValue = event.target;
+            const container = dropdownValue.closest('.ui-select-container');
+            
+            if (container) {
+                container.classList.add('has-placeholder');
+            }
+
+            getElementByIdCustom(inputElementId).value = item.textContent.trim();
+            errorControlFunction(elementToUpdate);
+
+            return item;
+        }
+
+        function controlErrorExpirationMonth(element) {
+
+            if (getElementByIdCustom('card-payment-form').elements.ExpirationMonth.value) {
+                element.parentElement.parentElement.classList.remove('has-error');
+                element.classList.remove('has-error');
+            } else {
+                element.parentElement.parentElement.classList.add('has-error');
+                element.classList.add('has-error');
+            }
+        }
+
+        function controlErrorExpirationYear(element) {
+
+            if (getElementByIdCustom('card-payment-form').elements.ExpirationYear.value) {
+                element.parentElement.parentElement.classList.remove('has-error');
+                element.classList.remove('has-error');
+
+            } else {
+                element.parentElement.parentElement.classList.add('has-error');
+                element.classList.add('has-error');
+            }
+        }
+
+        function handleOnblurExpirationMonth(event) {
+            controlErrorExpirationMonth(event.target);
+        }
+
+        function handleOnblurExpirationYear(event) {
+            controlErrorExpirationYear(event.target);
+        }
+
+        function catchInputValueError(inputElement) {
+            const blurEvent = new Event('blur');
+            inputElement.dispatchEvent(blurEvent);
+        }
+
+        function elementHasError(elementNode, callbackInputValueError) {
+            if (elementNode.classList.contains('has-error')) {
+                callbackInputValueError(elementNode);
+                return true;
+            }
+            return false;
+        }
+
+        function retrieveValueFromInputElement(elementId, callbackInputValueError) {
+            const elementInput = getElementByIdCustom(elementId);
+
+            if (!elementInput || elementInput.value.length === 0) {
+                if (!callbackInputValueError) return null;
+                return callbackInputValueError(elementInput);
+            }
+            return elementInput.value;
+        }
+
+        function getBody() {
+
+            const holderName = retrieveValueFromInputElement('Holder', catchInputValueError);
+            const cardNumber = retrieveValueFromInputElement('Data', catchInputValueError);
+            const cardType = detectCardType(cardNumber);
+            const cvv = retrieveValueFromInputElement('Cvv', function (element) {
+                if (cardType && cardType !== unknown) {
+                    if (cardType === cardTypeTP) return 111;
+                }
+                catchInputValueError(element);
+                return null;
+            });
+            const expirationMonth = retrieveValueFromInputElement('ExpirationMonth', function (element) {
+                catchInputValueError(getElementByIdCustom('expirationMonth_ExpirationDate'));
+            });
+            const expirationYear = retrieveValueFromInputElement('ExpirationYear', function (element) {
+                catchInputValueError(getElementByIdCustom('expirationYear_ExpirationDate'));
+            });
+
+            const holderNameHasError = elementHasError(getElementByIdCustom('Holder'), catchInputValueError);
+            const cardNumberHasError = elementHasError(getElementByIdCustom('Data'), catchInputValueError);
+            const cvvHasError = elementHasError(getElementByIdCustom('Cvv'), catchInputValueError);
+            const expirationMonthHasError = elementHasError(getElementByIdCustom('expirationMonth_ExpirationDate'), catchInputValueError);
+            const expirationYearHasError = elementHasError(getElementByIdCustom('expirationYear_ExpirationDate'), catchInputValueError);
+
+            const hasInvalidInputElement = [holderName, cardNumber, cvv, expirationMonth, expirationYear].some(function (element) {
+                return element === null;
+            })
+
+            const hasErrorInput = [holderNameHasError, cardNumberHasError, cvvHasError,
+                expirationMonthHasError, expirationYearHasError].some(function (element) {
+                    return element === true;
+                });
+
+            if (hasInvalidInputElement || hasErrorInput) {
+                console.warn("Invalid form");
+                return undefined;
+            }
+
+            const body = {
+                Method: cardType,
+                Holder: clearName(holderName),
+                Number: cardNumber.replace(/\s/g, ''),
+                ExpirationMonth: parseInt(expirationMonth),
+                ExpirationYear: parseInt(expirationYear),
+                VerifyCode: cvv
+            };
+
+            return body;
+        }
+
+        function clearName(name) {
+            const accentsMap = {
+                'á': 'a', 'é': 'e', 'í': 'i', 'ó': 'o', 'ú': 'u',
+                'Á': 'A', 'É': 'E', 'Í': 'I', 'Ó': 'O', 'Ú': 'U',
+                'ü': 'u', 'Ü': 'U', 'ñ': 'n', 'Ñ': 'N'
+            };
+
+            return name.replace(/[áéíóúÁÉÍÓÚüÜñÑ]/g, (match) => accentsMap[match] || match);
+        }
+
+        window.addEventListener('message', validateMessage, false);
+
+        function validateMessage(e) {
+            if (e.origin === 'https://uipci.newshore.es') {
+
+                if (e.data.authToken) {
+                    performSubmit(e);
+                }
+                else if (e.data.availabilityMethods) {
+                    setAvailabilityMethods(e);
+                }
+                else {
+                    console.warn('Invalid Message');
+                }
+
+            } else {
+                console.warn('Invalid Origin', e.origin);
+            }
+        }
+
+        function setAvailabilityMethods(e) {
+            let patterns = {
+                VI: /^4\d{12}(?:\d{3})?$/,
+                CA: /^5[1-5]\d{14}$|^(222[1-9]|22[3-9]\d|2[3-6]\d{2}|27[01]\d|2720)\d{12}$/,
+                AX: /^3[47]\d{13}$/,
+                TP: /^1\d{14}$/,
+                DC: /^3(?:0[0-5]|[68]\d)\d{11}$/,
+                DS: /^6\d{15}$/,
+                EL: /^\d{16}$/
+            };
+
+            const methods = e.data.availabilityMethods;
+
+            methods.forEach(function (method) {
+                const data = patterns[method];
+                if (data) {
+                    validPatterns[method] = data;
+                }
+            });
+        }
+
+        function performSubmit(e) {
+            const requestBody = getBody();
+
+            if (requestBody !== undefined) {
+                fetch('https://[host]/api/v1/CaptureCard/GetCardToken', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer ' + e.data.authToken,
+                        'X-CSRF-Token': getElementByIdCustom('csrf_token').value,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestBody)
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        parent.postMessage({ token1: data.cardToken, token2: data.cardToken2, franchise: data.franchiseId, maskedCard: data.maskedCard }, "https://uipci.newshore.es");
+                    })
+                    .catch(error => {
+                        console.error('API request failed:', error);
+                    });
+            }
+            else {
+                console.warn('Invalid body');
+            }
+        }
+
+        function createYearList() {
+            const maxExpireYearForDropdown = 11;
+            let dropdownList = getElementByIdCustom("listId_expirationYear_ExpirationDate");
+            let currentYear = new Date().getFullYear();
+
+            for (let i = 0; i < maxExpireYearForDropdown; i++) {
+                let expirationYear = currentYear + i;
+                let lastTwoDigits = expirationYear.toString().slice(-2);
+
+                let liElement = document.createElement("li");
+                liElement.className = "ui-dropdown_item";
+                liElement.setAttribute("role", "none");
+
+                let buttonElement = document.createElement("button");
+                buttonElement.type = "button";
+                buttonElement.className = "ui-dropdown_item_option";
+                buttonElement.setAttribute("role", "option");
+                buttonElement.id = "expirationYear_ExpirationDate-" + lastTwoDigits;
+
+                let spanElement = document.createElement("span");
+                spanElement.className = "ui-dropdown_item_option_name";
+                spanElement.textContent = lastTwoDigits;
+
+                buttonElement.appendChild(spanElement);
+
+                liElement.appendChild(buttonElement);
+
+                dropdownList.appendChild(liElement);
+            }
+        }
+
+        function notifyContentLoaded() {
+            parent.postMessage({ status: 'contentLoadedOk' }, "https://uipci.newshore.es");
+        }
+
+        (function () {
+            createYearList();
+
+            addEventListenerCustom(getElementByIdCustom('Data'), 'copy', function (event) {
+                event.preventDefault();
+            });
+            addEventListenerCustom(getElementByIdCustom('Data'), 'paste', function (event) {
+                event.preventDefault();
+            });
+            addEventListenerCustom(getElementByIdCustom('Holder'), 'paste', function (event) {
+                event.preventDefault();
+            });
+
+            const expirationMonthElement = getElementByIdCustom('expirationMonth_ExpirationDate');
+            const expirationYearElement = getElementByIdCustom('expirationYear_ExpirationDate');
+
+            addEventListenerCustom(expirationMonthElement, 'click', function () {
+                if (expirationMonthElement.nextElementSibling.classList.contains('hide-element')) {
+                    setAttributesToListElement(expirationMonthElement, true, 'listId_expirationMonth_ExpirationDate');
+                } else {
+                    setAttributesToListElement(expirationMonthElement);
+                }
+            });
+            addEventListenerCustom(expirationYearElement, 'click', function () {
+                if (expirationYearElement.nextElementSibling.classList.contains('hide-element')) {
+                    setAttributesToListElement(expirationYearElement, true, 'listId_expirationYear_ExpirationDate');
+                } else {
+                    setAttributesToListElement(expirationYearElement);
+                }
+            });
+            addEventListenerCustom(document, 'click', function (event) {
+                const targetElement = event.target;
+                if (!expirationMonthElement.contains(targetElement)) {
+                    setAttributesToListElement(expirationMonthElement);
+                }
+
+                if (!expirationYearElement.contains(targetElement)) {
+                    setAttributesToListElement(expirationYearElement);
+                }
+            });
+
+            const listYearItems = document.querySelectorAll('#listId_expirationYear_ExpirationDate .ui-dropdown_item_option');
+            let oldItemYear;
+
+            listYearItems.forEach(function (item) {
+                item.addEventListener('click', function () {
+                    oldItemYear = handleDropdownItemClick(item, oldItemYear, expirationYearElement, 'ExpirationYear', controlErrorExpirationYear);
+                });
+            });
+
+            const listMonthItems = document.querySelectorAll('#listId_expirationMonth_ExpirationDate .ui-dropdown_item_option');
+            let oldItemMonth;
+
+            listMonthItems.forEach(function (item) {
+                item.addEventListener('click', function () {
+                    oldItemMonth = handleDropdownItemClick(item, oldItemMonth, expirationMonthElement, 'ExpirationMonth', controlErrorExpirationMonth);
+                });
+            });
+            notifyContentLoaded();
+        })();
+    </script>
+</body>
+</html>
